@@ -2,9 +2,25 @@ package com.bridgelabz.oopsbannerapp;
 
 public class OOPSBanner {
 
-    // Pattern for letter 'O'
-    public static String[] getOPattern() {
-        return new String[]{
+    // Inner class representing a Letter pattern
+    class Letter {
+        private String[] pattern;
+
+        public Letter(String[] pattern) {
+            this.pattern = pattern;
+        }
+
+        public String[] getPattern() {
+            return pattern;
+        }
+    }
+
+    public static void main(String[] args) {
+
+        OOPSBanner banner = new OOPSBanner();
+
+        // Creating Letter objects using inner class
+        Letter O = banner.new Letter(new String[] {
                 "   ******   ",
                 " **      ** ",
                 "**        **",
@@ -12,12 +28,9 @@ public class OOPSBanner {
                 "**        **",
                 " **      ** ",
                 "   ******   "
-        };
-    }
+        });
 
-    // Pattern for letter 'P'
-    public static String[] getPPattern() {
-        return new String[]{
+        Letter P = banner.new Letter(new String[] {
                 "********    ",
                 "**      **  ",
                 "**      **  ",
@@ -25,12 +38,9 @@ public class OOPSBanner {
                 "**          ",
                 "**          ",
                 "**          "
-        };
-    }
+        });
 
-    // Pattern for letter 'S'
-    public static String[] getSPattern() {
-        return new String[]{
+        Letter S = banner.new Letter(new String[] {
                 "   ******   ",
                 " **         ",
                 "**          ",
@@ -38,16 +48,13 @@ public class OOPSBanner {
                 "        **  ",
                 "        **  ",
                 "   ******   "
-        };
-    }
+        });
 
-    public static void main(String[] args) {
+        String[] oPattern = O.getPattern();
+        String[] pPattern = P.getPattern();
+        String[] sPattern = S.getPattern();
 
-        String[] oPattern = getOPattern();
-        String[] pPattern = getPPattern();
-        String[] sPattern = getSPattern();
-
-        // Print "OOPS"
+        // Print OOPS banner
         for (int i = 0; i < oPattern.length; i++) {
             System.out.println(
                     oPattern[i] + "  " +   // O
