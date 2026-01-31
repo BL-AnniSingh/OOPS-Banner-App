@@ -1,26 +1,16 @@
 package com.bridgelabz.oopsbannerapp;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class OOPSBanner {
-
-    // Inner class representing a Letter pattern
-    class Letter {
-        private String[] pattern;
-
-        public Letter(String[] pattern) {
-            this.pattern = pattern;
-        }
-
-        public String[] getPattern() {
-            return pattern;
-        }
-    }
 
     public static void main(String[] args) {
 
-        OOPSBanner banner = new OOPSBanner();
+        // Step 1: Create a Map of letters to their patterns
+        Map<Character, String[]> letterPatterns = new HashMap<>();
 
-        // Creating Letter objects using inner class
-        Letter O = banner.new Letter(new String[] {
+        letterPatterns.put('O', new String[]{
                 "   ******   ",
                 " **      ** ",
                 "**        **",
@@ -30,7 +20,7 @@ public class OOPSBanner {
                 "   ******   "
         });
 
-        Letter P = banner.new Letter(new String[] {
+        letterPatterns.put('P', new String[]{
                 "********    ",
                 "**      **  ",
                 "**      **  ",
@@ -40,7 +30,7 @@ public class OOPSBanner {
                 "**          "
         });
 
-        Letter S = banner.new Letter(new String[] {
+        letterPatterns.put('S', new String[]{
                 "   ******   ",
                 " **         ",
                 "**          ",
@@ -50,18 +40,23 @@ public class OOPSBanner {
                 "   ******   "
         });
 
-        String[] oPattern = O.getPattern();
-        String[] pPattern = P.getPattern();
-        String[] sPattern = S.getPattern();
+        // Step 2: Define the word to print
+        String word = "OOPS";
 
-        // Print OOPS banner
-        for (int i = 0; i < oPattern.length; i++) {
-            System.out.println(
-                    oPattern[i] + "  " +   // O
-                            oPattern[i] + "  " +   // O
-                            pPattern[i] + "  " +   // P
-                            sPattern[i]            // S
-            );
+        // Step 3: Print the word line by line
+        for (int i = 0; i < 7; i++) {  // 7 lines in each letter
+            StringBuilder line = new StringBuilder();
+
+            for (char ch : word.toCharArray()) {
+                String[] pattern = letterPatterns.get(ch);
+                if (pattern != null) {
+                    line.append(pattern[i]).append("  "); // spacing between letters
+                } else {
+                    line.append("          "); // empty space if letter not found
+                }
+            }
+
+            System.out.println(line);
         }
     }
 }
